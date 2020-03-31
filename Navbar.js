@@ -40,13 +40,16 @@ const classes = useStyles();
   const handleClose = () => {
     setAnchorEl(null);
   };
+
     return (
         <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
+
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
+
             <Typography variant="h6" className={classes.title}>
               Photos
             </Typography>
@@ -61,6 +64,7 @@ const classes = useStyles();
                 >
                   <AccountCircle />
                 </IconButton>
+
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}
@@ -76,9 +80,11 @@ const classes = useStyles();
                   open={open}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleClose}>Add Places</MenuItem>
+                  <MenuItem onClick={handleClose}>Add Customers</MenuItem>
+                  <MenuItem onClick={handleClose}>Add Booking</MenuItem>
                 </Menu>
+                
               </div>
             )}
           </Toolbar>

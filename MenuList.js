@@ -45,22 +45,26 @@ export default function MenuList(){
         <List dense={dense}>
         {menus.map(val => (
             <div>
+
           <ListItem>
             <ListItemAvatar>
               {/* <Avatar>
                 <FolderIcon />
               </Avatar> */}
             </ListItemAvatar>
+
             <ListItemText
               primary={val.name}
               secondary={secondary ? 'Secondary text' : null}
             />
+
             <ListItemSecondaryAction>
               <IconButton edge="end" aria-label="delete">
             <Chip variant="outlined" color="secondary" label={val.number}/>
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
+          
           <Divider/>
           </div>
         )

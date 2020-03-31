@@ -15,16 +15,16 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.text.secondary,
     },
   }));
-export default function Main(){
+export default function Main(props){
     const classes = useStyles();
     return (
         <Grid container spacing={3}>
         <Grid item xs={12} sm={3}>
-          <MenuList/>
+          <MenuList className={classes.paper}/>
         </Grid>
         <Grid item xs={12} sm={9}>
           <Overview/>
-          <Booking/>
+          <Booking places={props.places}/>
         </Grid>
     </Grid>
     )

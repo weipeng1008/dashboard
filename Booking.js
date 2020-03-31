@@ -28,8 +28,8 @@ const useStyles = makeStyles({
     },
   });
 
-  function createData(hotelName, customerName, price, numOfnight, total) {
-    return { hotelName, customerName, price, numOfnight, total };
+  function createData(name, customerName, price, numOfnight, total) {
+    return { name, customerName, price, numOfnight, total };
   }
   
   const rows = [
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     createData('Luna Penang', 'John', 180, 2, 360),
     createData('IOI Puchong ', 'Jimmy', 200, 2, 400),
   ];
-export default function Booking(){
+export default function Booking(props){
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
     return (
@@ -55,20 +55,16 @@ export default function Booking(){
             <TableCell>Hotel name</TableCell>
             <TableCell align="right">Customer name</TableCell>
             <TableCell align="right">Daily price</TableCell>
-            <TableCell align="right">Number of nights</TableCell>
-            <TableCell align="right">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
+          {props.places.map(row => (
+            <TableRow key={name}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.customerName}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.numOfnight}</TableCell>
-              <TableCell align="right">{row.total}</TableCell>
+              <TableCell align="right">{row.city}</TableCell>
+              <TableCell align="right">{row.phonenumber}</TableCell>
             </TableRow>
           ))}
         </TableBody>
