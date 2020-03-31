@@ -52,7 +52,6 @@ export default function Login() {
           Login
         </Typography>
 
-        <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -105,7 +104,6 @@ export default function Login() {
             </Grid>
           </Grid>
           
-        </form>
       </div>
 
       <Box mt={8}>
