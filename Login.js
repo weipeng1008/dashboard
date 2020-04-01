@@ -12,7 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Copyright from '../components/Copyright'
+import Copyright from '../components/Copyright';
+import {Redirect} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -71,7 +72,9 @@ export default class LogIn extends React.Component {
         localStorage.setItem("token",token)
         //location.href = "/dashboard"
         //Redirect to dashboard
-        console.log(token)
+        this.setState({
+          token:token
+        })
       }
       else{
 
@@ -92,6 +95,15 @@ export default class LogIn extends React.Component {
   }
 
   render(){
+    if (this.state.token){
+      return (
+        <Redirect to={{
+          pathname:"/dashboard"
+        }}/>
+      )
+    }
+
+    else {
   return (
     <Container component="main" maxWidth="xs">
 
@@ -166,5 +178,6 @@ export default class LogIn extends React.Component {
       </Box>
     </Container>
   );
+}
 }
 }
