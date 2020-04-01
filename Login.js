@@ -34,17 +34,72 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
-  const classes = useStyles();
+export default class LogIn extends React.Component {
+  //const classes = useStyles();
 
+  constructor(){
+    super();
+    this.state = {
+      username:'',
+      password:''
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.onEmailChanged = this.onEmailChanged.bind(this);
+    this.onPasswordChanged = this.onPasswordChanged.bind(this);
+  }
+
+  handleClick(){
+    let opts = {
+      "username":this.state.username,
+      "password":this.state.password
+    }
+    console.log(opts)
+    fetch(`https://apiproject11.herokuapp.com/api/login`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(opts)
+    }).then(function(response){
+      return response.json();
+    }).then(function(data){
+      console.log(data)
+      if (data.success==true){
+        let token = data.token.split(" ")[1]
+        console.log(token)
+        localStorage.setItem("token",token)
+        //location.href = "/dashboard"
+        //Redirect to dashboard
+        console.log(token)
+      }
+      else{
+
+      }
+    })
+  }
+
+  onEmailChanged(evt){
+    this.setState({
+      username:evt.target.value
+    })
+  }
+
+  onPasswordChanged(evt){
+    this.setState({
+      password:evt.target.value
+    })
+  }
+
+  render(){
   return (
     <Container component="main" maxWidth="xs">
 
       <CssBaseline />
 
-      <div className={classes.paper}>
+      <div>
 
-        <Avatar className={classes.avatar}>
+        <Avatar>
           <LockOutlinedIcon />
         </Avatar>
 
@@ -85,7 +140,7 @@ export default function Login() {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            onClick={this.handleClick}
           >
             Log In
           </Button>
@@ -111,4 +166,5 @@ export default function Login() {
       </Box>
     </Container>
   );
+}
 }

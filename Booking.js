@@ -59,9 +59,9 @@ export default function Booking(props){
         </TableHead>
         <TableBody>
           {props.places.map(row => (
-            <TableRow key={name}>
+            <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {name}
+                {row.name}
               </TableCell>
               <TableCell align="right">{row.city}</TableCell>
               <TableCell align="right">{row.phonenumber}</TableCell>
