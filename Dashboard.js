@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from '../components/Navbar'
 import Main from '../components/Main'
 import Copyright from '../components/Copyright'
+import {Redirect} from 'react-router-dom';
+
 
 class Dashboard extends React.Component {
 

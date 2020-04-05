@@ -42,7 +42,8 @@ export default class LogIn extends React.Component {
     super();
     this.state = {
       username:'',
-      password:''
+      password:'',
+      token: ''
     }
     this.handleClick = this.handleClick.bind(this);
     this.onEmailChanged = this.onEmailChanged.bind(this);
@@ -62,9 +63,9 @@ export default class LogIn extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(opts)
-    }).then(function(response){
+    }).then((response) => {
       return response.json();
-    }).then(function(data){
+    }).then((data) => {
       console.log(data)
       if (data.success==true){
         let token = data.token.split(" ")[1]
@@ -125,9 +126,11 @@ export default class LogIn extends React.Component {
             required
             fullWidth
             id="email"
+            value={this.state.username}
             label="Email Address"
             name="email"
             autoComplete="email"
+            onChange={this.onEmailChanged}
             autoFocus
           />
           <TextField
@@ -135,11 +138,13 @@ export default class LogIn extends React.Component {
             margin="normal"
             required
             fullWidth
+            value={this.state.password}
             name="password"
             label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={this.onPasswordChanged}
           />
 
           <FormControlLabel
